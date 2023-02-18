@@ -40,5 +40,5 @@ export function initialize() {
   document.body.classList.add("loaded")
 
   // redirecting
-  // window.location.href = textUrl;
+  window.location.href = textUrl;
 }
