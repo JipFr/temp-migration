@@ -1,3 +1,5 @@
+import pako from "pako" 
+
 const newDomainUrl = "https://movie-web.app/#/v2-migration";
 
 function getMigrationDate(): Date {
@@ -31,7 +33,7 @@ export function initialize() {
   const date = getMigrationDate();
   url.searchParams.append("m-time", date.toISOString());
   const data = buildDataObject();
-  url.searchParams.append("m-data", btoa(JSON.stringify(data)));
+  url.searchParams.append("m-data", atob(pako.deflate(JSON.stringify(data))));
 
   // setting link
   console.log("built data, redirecting!");
@@ -40,5 +42,5 @@ export function initialize() {
   document.body.classList.add("loaded")
 
   // redirecting
-  window.location.href = textUrl;
+  // window.location.href = textUrl;
 }

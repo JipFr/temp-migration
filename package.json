@@ -26,5 +26,9 @@
   "devDependencies": {
     "typescript": "^4.6.4",
     "vite": "^4.0.1"
+  },
+  "dependencies": {
+    "@types/pako": "^2.0.0",
+    "pako": "^2.1.0"
   }
 }
