@@ -1,0 +1,48 @@
+body,
+html {
+    overflow-x: hidden;
+    --tw-bg-opacity: 1;
+    background-color: rgb(18 15 29);
+    font-family: 'Open Sans';
+    --tw-text-opacity: 1;
+    color: rgb(122 117 143);
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader {
+    color: rgb(132, 123, 168);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.spinner {
+    font-size: 30px;
+    width: 1em;
+    height: 1em;
+    border: 0.15em solid var(--color, white);
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: spinner-rotation 800ms linear infinite;
+}
+
+@keyframes spinner-rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
