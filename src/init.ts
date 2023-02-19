@@ -1,6 +1,6 @@
 import pako from "pako" 
 
-const newDomainUrl = "https://movie-web.app/#/v2-migration";
+const newDomainUrl = "https://movie-web.app/v2-migration";
 
 function toBinary(arr: Uint8Array) {
   let result = "";
