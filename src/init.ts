@@ -36,5 +36,5 @@ export function initialize() {
     date,
     data,
     isMigrationData: true
-  }), "*")
+  }), "https://movie-web.app")
 }
