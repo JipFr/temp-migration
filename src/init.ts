@@ -1,15 +1,3 @@
-import pako from "pako" 
-
-const newDomainUrl = "https://movie-web.app/v2-migration";
-
-function toBinary(arr: Uint8Array) {
-  let result = "";
-  arr.forEach((char) => {
-    result += String.fromCharCode(char);
-  });
-  return result;
-}
-
 function getMigrationDate(): Date {
   const key = "mw-migration-date"
   const item = localStorage.getItem(key);
@@ -34,21 +22,19 @@ function buildDataObject(): Record<string, any> {
 }
 
 export function initialize() {
-  const url = new URL(newDomainUrl);
-  
   // building parameters
   console.log("Running migration...")
   const date = getMigrationDate();
-  url.searchParams.append("m-time", date.toISOString());
   const data = buildDataObject();
-  url.searchParams.append("m-data", btoa(toBinary(pako.deflate(JSON.stringify(data)))));
 
   // setting link
-  console.log("built data, redirecting!");
-  const textUrl = url.toString();
-  document.getElementById("link")?.setAttribute("href", textUrl);
+  console.log("Got all data, emitting event to parent");
   document.body.classList.add("loaded")
 
   // redirecting
-  window.location.href = textUrl;
+  window.parent.postMessage(({
+    date,
+    data,
+    isMigrationData: true
+  }), "*")
 }
